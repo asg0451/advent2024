@@ -26,30 +26,7 @@ func Part1(ctx context.Context, log *slog.Logger, opts common.Opts) error {
 
 	numSafe := 0
 	for _, report := range reports {
-		// a report only counts as safe if both of the following are true:
-		// - The levels are either all increasing or all decreasing.
-		// - Any two adjacent levels differ by at least one and at most three.
-
-		if len(report) < 2 {
-			numSafe++ // i guess?
-			continue
-		}
-		isSafe := true
-		isIncreasing := report[0] < report[1]
-		for i := 1; i < len(report); i++ {
-			isStillIncreasing := report[i-1] < report[i]
-			if isIncreasing != isStillIncreasing {
-				isSafe = false
-				break
-			}
-
-			diff := math.Abs(float64(report[i] - report[i-1]))
-			if diff < 1 || diff > 3 {
-				isSafe = false
-				break
-			}
-		}
-		if isSafe {
+		if reportIsSafe(report) {
 			numSafe++
 		}
 	}
@@ -60,8 +37,57 @@ func Part1(ctx context.Context, log *slog.Logger, opts common.Opts) error {
 }
 
 func Part2(ctx context.Context, log *slog.Logger, opts common.Opts) error {
+	reports, err := getReports(opts)
+	if err != nil {
+		return err
+	}
+
+	numSafe := 0
+	for _, report := range reports {
+		if reportIsSafe(report) {
+			numSafe++
+			continue
+		}
+
+	attempting:
+		// try excluding each level in the report
+		for i := 0; i < len(report); i++ {
+			reportCopy := make([]int, 0, len(report)-1)
+			reportCopy = append(reportCopy, report[:i]...)
+			reportCopy = append(reportCopy, report[i+1:]...)
+			if reportIsSafe(reportCopy) {
+				numSafe++
+				break attempting
+			}
+		}
+	}
+
+	log.Info("result", "numSafe", numSafe)
 
 	return nil
+}
+
+func reportIsSafe(report []int) bool {
+	// a report only counts as safe if both of the following are true:
+	// - The levels are either all increasing or all decreasing.
+	// - Any two adjacent levels differ by at least one and at most three.
+
+	isSafe := true
+	isIncreasing := report[0] < report[1]
+	for i := 1; i < len(report); i++ {
+		isStillIncreasing := report[i-1] < report[i]
+		if isIncreasing != isStillIncreasing {
+			isSafe = false
+			break
+		}
+
+		diff := math.Abs(float64(report[i] - report[i-1]))
+		if diff < 1 || diff > 3 {
+			isSafe = false
+			break
+		}
+	}
+	return isSafe
 }
 
 func getReports(opts common.Opts) ([][]int, error) {

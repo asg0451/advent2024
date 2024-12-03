@@ -37,7 +37,7 @@
             "id": "input",
             "type": "promptString",
             "description": "Input file",
-            "default": "${workspaceFolder}/day2/input-1.txt"
+            "default": "${file}"
         }
     ]
 }
