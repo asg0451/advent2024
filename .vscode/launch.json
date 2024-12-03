@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug solution",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "solutions",
+            "args": [
+                "-d",
+                "${input:day}",
+                "-p",
+                "${input:part}",
+                "-i",
+                "${input:input}"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "day",
+            "type": "promptString",
+            "description": "Day to run",
+            "default": "2"
+        },
+        {
+            "id": "part",
+            "type": "promptString",
+            "description": "Part to run",
+            "default": "1"
+        },
+        {
+            "id": "input",
+            "type": "promptString",
+            "description": "Input file",
+            "default": "${workspaceFolder}/day2/input-1.txt"
+        }
+    ]
+}
