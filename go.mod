@@ -5,7 +5,6 @@ go 1.23.3
 require go.coldcutz.net/go-stuff v0.0.3
 
 require (
-	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/jessevdk/go-flags v1.6.1 // indirect
 	golang.org/x/net v0.31.0 // indirect
 	golang.org/x/sys v0.27.0 // indirect

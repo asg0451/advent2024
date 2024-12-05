@@ -10,6 +10,7 @@ import (
 	"go.coldcutz.net/advent2024/day1"
 	"go.coldcutz.net/advent2024/day2"
 	"go.coldcutz.net/advent2024/day3"
+	"go.coldcutz.net/advent2024/day4"
 	"go.coldcutz.net/go-stuff/utils"
 )
 
@@ -17,6 +18,7 @@ var days = map[int]common.Solutions{
 	1: day1.Solutions,
 	2: day2.Solutions,
 	3: day3.Solutions,
+	4: day4.Solutions,
 }
 
 type Opts struct {
