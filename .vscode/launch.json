@@ -25,7 +25,7 @@
             "id": "day",
             "type": "promptString",
             "description": "Day to run",
-            "default": "2"
+            "default": "5"
         },
         {
             "id": "part",
@@ -37,7 +37,7 @@
             "id": "input",
             "type": "promptString",
             "description": "Input file",
-            "default": "${file}"
+            "default": "/Users/miles/proj/advent2024/day5/debug.txt"
         }
     ]
 }
