@@ -25,19 +25,19 @@
             "id": "day",
             "type": "promptString",
             "description": "Day to run",
-            "default": "5"
+            "default": "6"
         },
         {
             "id": "part",
             "type": "promptString",
             "description": "Part to run",
-            "default": "1"
+            "default": "2"
         },
         {
             "id": "input",
             "type": "promptString",
             "description": "Input file",
-            "default": "/Users/miles/proj/advent2024/day5/debug.txt"
+            "default": "/Users/miles/proj/advent2024/day6/input.txt"
         }
     ]
 }
